@@ -7,10 +7,10 @@ import AdminHome from "../pages/dashboard/AdminHome";
 import EmployeeHome from "../pages/dashboard/EmployeeHome";
 import ManagerHome from "../pages/dashboard/ManagerHome";
 import Projects from "../pages/projects/Projects";
-import CreateProject from "../pages/projects/create.tsx";
+import CreateProject from "../pages/projects/Create.tsx";
 import Users from "../pages/users/Users";
-import CreateUser from "../pages/users/create.tsx"
-import Profile from "../pages/profiles/profile.tsx";
+import CreateUser from "../pages/users/Create.tsx"
+import Profile from "../pages/profiles/Profile.tsx";
 import { ProtectedRoute, RoleHomeRedirect, RoleRoute } from "./ProtectedRoute";
 
 export default function AppRoutes() {
