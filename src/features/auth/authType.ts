@@ -7,7 +7,7 @@ export interface LoginRequest {
 
 export interface AuthResponse {
   id: number;
-  username: string;
+  name: string;
   email: string;
   role: Role;
   mobileNumber?: string;
