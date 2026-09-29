@@ -1,9 +1,22 @@
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import DashboardShell from "../../components/DashboardShell";
 import type { RootState } from "../../app/store";
+import { useGetUserQuery } from "../../features/users/userApi";
 
 export default function Profile() {
-  const user = useSelector((state: RootState) => state.auth.user);
+  const authUser = useSelector((state: RootState) => state.auth.user);
+  const { id: idParam } = useParams();
+  const userId = Number(idParam);
+  const shouldFetchUser = Number.isInteger(userId) && userId > 0;
+  const {
+    data: fetchedUser,
+    isLoading,
+    isError,
+  } = useGetUserQuery(userId, { skip: !shouldFetchUser });
+
+  const name = fetchedUser?.username ?? authUser?.name ?? "PiVault user";
+  const email = fetchedUser?.email ?? authUser?.email ?? "No email available";
 
   return (
     <DashboardShell
@@ -12,42 +25,50 @@ export default function Profile() {
       description="Review the account details connected to your PiVault access."
     >
       <section className="profile-card">
+        {isLoading ? (
+          <p>Loading profile...</p>
+        ) : isError || (idParam && !shouldFetchUser) ? (
+          <p role="alert">Unable to load this user profile.</p>
+        ) : (
+          <>
         <div className="profile-card-top">
           <span className="profile-avatar">
-            {user?.name?.charAt(0).toUpperCase() ?? "U"}
+            {name.charAt(0).toUpperCase()}
           </span>
           <div>
             <span className="panel-kicker">ACCOUNT PROFILE</span>
-            <h3>{user?.name ?? "PiVault user"}</h3>
-            <p>{user?.email ?? "No email available"}</p>
+            <h3>{name}</h3>
+            <p>{email}</p>
           </div>
         </div>
         <div className="profile-details">
          <div>
             <span>EMP-ID</span>
-            <strong>{user?.id}</strong>
+            <strong>{fetchedUser?.id ?? authUser?.id}</strong>
           </div>
           <div>
             <span>Role</span>
-            <strong>{user?.role ?? "Member"}</strong>
+            <strong>{fetchedUser?.role ?? authUser?.role ?? "Member"}</strong>
           </div>
           <div>
             <span>Official email</span>
-            <strong>{user?.officialEmail || "Not provided"}</strong>
+            <strong>{fetchedUser?.officialEmail ?? authUser?.officialEmail ?? "Not provided"}</strong>
           </div>
           <div>
             <span>Mobile number</span>
-            <strong>{user?.mobileNumber || "Not provided"}</strong>
+            <strong>{fetchedUser?.mobileNumber ?? authUser?.mobileNumber ?? "Not provided"}</strong>
           </div>
           <div>
             <span>Github</span>
-            <strong>{user?.github || "Not provided"}</strong>
+            <strong>{fetchedUser?.github ?? authUser?.github ?? "Not provided"}</strong>
           </div>
           <div>
             <span>Address</span>
-            <strong>{user?.address || "Not provided"}</strong>
+            <strong>{fetchedUser?.address ?? authUser?.address ?? "Not provided"}</strong>
           </div>
         </div>
+          </>
+        )}
       </section>
     </DashboardShell>
   );
