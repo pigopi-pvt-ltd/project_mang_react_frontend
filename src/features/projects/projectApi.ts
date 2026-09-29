@@ -56,6 +56,7 @@ export const projectApi = api.injectEndpoints({
       query: (id) => ({
         url: `/projects/${id}`,
         method: "DELETE",
+        responseHandler: "text",
       }),
       invalidatesTags: ["Projects"],
     }),

@@ -1,16 +1,16 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import Login from "../pages/auth/Login";
-import ForgotPassword from "../pages/auth/Forget Password"; 
+import ForgotPassword from "../pages/auth/Forget Password";
 import ResetPassword from "../pages/auth/ResetPassword";
 import AdminHome from "../pages/dashboard/AdminHome";
 import EmployeeHome from "../pages/dashboard/EmployeeHome";
 import ManagerHome from "../pages/dashboard/ManagerHome";
 import Projects from "../pages/projects/Projects";
-import CreateProject from "../pages/projects/Create";
+import CreateProject from "../pages/projects/Create.tsx";
 import Users from "../pages/users/Users";
-import CreateUser from "../pages/users/Create";
-import Profile from "../pages/profiles/Profile";
+import CreateUser from "../pages/users/Create.tsx";
+import Profile from "../pages/profiles/Profile.tsx";
 import { ProtectedRoute, RoleHomeRedirect, RoleRoute } from "./ProtectedRoute";
 
 export default function AppRoutes() {

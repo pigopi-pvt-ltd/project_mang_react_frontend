@@ -724,6 +724,26 @@
   font-weight: 800;
 }
 
+.project-search {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #dceae6;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(31, 75, 71, 0.04);
+}
+
+.project-search input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c7d6d5;
+  border-radius: 9px;
+  outline: none;
+  color: #16383d;
+  background: #f8fbfa;
+  font-size: 15px;
+}
+
 .project-list {
   display: grid;
   gap: 10px;
@@ -739,18 +759,11 @@
 }
 
 .project-icon {
-  width: 35px;
-  height: 35px;
-  display: grid;
-  place-items: center;
-  border-radius: 9px;
-  color: #157e75;
-  background: #e3f3ee;
+  font-size: 30px;
 }
 
 .project-row div {
   min-width: 0;
-  flex: 1;
 }
 
 .project-row strong,
@@ -770,6 +783,165 @@
   font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.create-project-button{
+  display: inline-block;
+  margin-bottom: 10px;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  background: #157e75;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.project-row .project-info {
+  flex: 1;
+}
+
+.project-actions {
+  margin-right: 0px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.project-actions > button,
+.project-menu button,
+.project-edit-actions button {
+  border: 0;
+  border-radius: 6px;
+  padding: 3px;
+  color: #173b40;
+  background: #eef5f3;
+  cursor: pointer;
+  font: inherit;
+}
+
+.project-actions > button {
+  min-width: 34px;
+  font-size: 20px;
+  line-height: 1;
+  background: transparent;
+}
+
+.project-menu {
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 5px);
+  right: 0;
+  display: grid;
+  min-width: 112px;
+  gap: 4px;
+  padding: 5px;
+  border: 1px solid #e2eeeb;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(23, 59, 64, 0.12);
+}
+
+.project-menu button {
+  text-align: left;
+  background: transparent;
+}
+
+.project-menu button:last-child {
+  color: #a33535;
+}
+
+.project-edit-form {
+  display: grid;
+  flex: 1;
+  gap: 8px;
+}
+
+.project-edit-form input,
+.project-edit-form textarea {
+  width: 100%;
+  border: 1px solid #c7d6d5;
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: #16383d;
+  background: #f8fbfa;
+  font: inherit;
+  font-size: 13px;
+}
+
+.project-edit-form textarea {
+  resize: vertical;
+}
+
+.project-edit-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.project-edit-actions button:disabled,
+.project-menu button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+.project-confirm-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 34, 34, 0.48);
+}
+
+.project-confirm-dialog {
+  width: min(100%, 420px);
+  padding: 24px;
+  border: 1px solid #dceae6;
+  border-radius: 10px;
+  color: #173b40;
+  background: #fff;
+  box-shadow: 0 18px 50px rgba(15, 34, 34, 0.24);
+}
+
+.project-confirm-dialog h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.project-confirm-dialog p {
+  margin: 12px 0 22px;
+  color: #58716e;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.project-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.project-confirm-actions button {
+  min-height: 38px;
+  padding: 8px 13px;
+  border: 1px solid #c7d6d5;
+  border-radius: 6px;
+  color: #173b40;
+  background: #fff;
+  cursor: pointer;
+  font: inherit;
+}
+
+.project-confirm-actions .project-confirm-delete {
+  border-color: #a33535;
+  color: #fff;
+  background: #a33535;
+}
+
+.project-confirm-actions button:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 
 .project-arrow {
